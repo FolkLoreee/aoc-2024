@@ -1,6 +1,4 @@
-use std::fs::File;
-use std::io::{self, BufRead};
-use std::path::Path;
+use crate::utils::file::read_lines;
 
 pub fn run() {
     let mut dist1: Vec<i32> = Vec::new();
@@ -27,12 +25,4 @@ pub fn run() {
         sum += diff;
     }
     println!("sum: {sum}");
-}
-
-fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
-where
-    P: AsRef<Path>,
-{
-    let file = File::open(filename).expect("error opening the file");
-    Ok(io::BufReader::new(file).lines())
 }
